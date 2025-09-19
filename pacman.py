@@ -27,6 +27,7 @@ ghosts = [
 ]
 # fmt: off
 
+# se cambiaron arbitrariamente tiles para modificar el mapa
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
@@ -136,11 +137,15 @@ def move():
             point.move(course)
         else:
             options = [
-                vector(10, 0),
+                vector(10, 0), # cambio velocidad fantasmas de 5 a 10
                 vector(-10, 0),
                 vector(0, 10),
                 vector(0, -10),
             ]
+            '''
+            Esta seccion hace a los fantasmas mas inteligentes.
+            Deciden su curso dependiendo de que tan cerca esten del pacman.
+            '''
             plan = choice(options)
             distance = 100000000
             for i in options:
