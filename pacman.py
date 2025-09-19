@@ -141,8 +141,14 @@ def move():
                 vector(0, -5),
             ]
             plan = choice(options)
-            course.x = plan.x
-            course.y = plan.y
+            distance = 100000000
+            for i in options:
+                if valid(point + i):
+                    pac_distance = (point.x + course.x - pacman.x)**2 + (point.y + course.y - pacman.y)**2
+                    if pac_distance < distance:
+                        distance = pac_distance
+                        course.x = plan.x
+                        course.y = plan.y
 
         up()
         goto(point.x + 10, point.y + 10)
